@@ -17,6 +17,8 @@ class UserSeeder extends Seeder
         \DB::table('users')->insert([
             'role_id' => 1,
             'name' => 'John Doe',
+            'phone' => '09239160388',
+            'status' => 'admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('password')
         ]);
@@ -24,7 +26,18 @@ class UserSeeder extends Seeder
         \DB::table('users')->insert([
             'role_id' => 2,
             'name' => 'Kobe Andaya',
+            'phone' => '09995348497',
+            'status' => 'student',
             'email' => 'user@user.com',
+            'password' => bcrypt('password')
+        ]);
+
+        \DB::table('users')->insert([
+            'role_id' => 3,
+            'name' => 'Jhie Bunda',
+            'phone' => '09999999999',
+            'status' => 'faculty',
+            'email' => 'user2@user.com',
             'password' => bcrypt('password')
         ]);
     }

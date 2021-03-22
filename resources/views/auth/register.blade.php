@@ -26,7 +26,7 @@
       <form action="{{ route('register') }}" method="post">
           @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Full name" name="fullname">
+          <input type="text" class="form-control" placeholder="Full name" name="name">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="phone_number" class="form-control" placeholder="Phone Number" name="phone_number">
+          <input type="phone_number" class="form-control" placeholder="Phone Number" name="phone">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-mobile-alt"></span>

@@ -39,10 +39,12 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        if(Auth::check() && Auth::user()->status = 'admin'){
+        if(Auth::check() && Auth::user()->role_id = 'admin'){
             $this->redirectTo = route('admin.dashboard');
-        } else {
+        } else if(Auth::check() && Auth::user()->role_id = 'student') {
             $this->redirectTo = route('user.dashboard');
+        } else {
+            $this->redirectTo = route('faculty.dashboard');
         }
             $this->middleware('guest')->except('logout');
     }
@@ -57,7 +59,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            //'phone_number' =>['required', 'integer', 'min:11', 'max:11'],
+            'phone' => ['required', 'string', 'max:12', 'min:12'],
             'status' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -74,6 +76,8 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'phone' => $data['phone'],
+            'status' => $data['status'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
